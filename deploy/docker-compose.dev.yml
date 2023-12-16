@@ -13,7 +13,7 @@ services:
       - ./oracle/init:/docker-entrypoint-initdb.d/setup
 
   zoo1:
-    image: zookeeper:3.9.1
+    image: zookeeper:3.9.1@sha256:6cb1e043924cd3b56bb61c272e0cea474ca0eae6c2c85386d2ec7f93b9c80b28
     restart: unless-stopped
     hostname: zoo1
     ports:
@@ -24,7 +24,7 @@ services:
       ZOO_SERVERS: server.1=zoo1:2888:3888;2181
 
   kafka1:
-    image: confluentinc/cp-kafka:7.5.1
+    image: confluentinc/cp-kafka:7.5.1@sha256:dc9b972db0029bca9c9fa33fb7d271bbd6de35bfe56bed42d78dcb4b0b63f6b2
     hostname: kafka1
     ports:
       - "9092:9092"
@@ -40,7 +40,7 @@ services:
       - zoo1
 
   kafka-rest-proxy:
-    image: confluentinc/cp-kafka-rest:7.5.1
+    image: confluentinc/cp-kafka-rest:7.5.1@sha256:dab20ae6fb83b8ce5f2f46c549b3810c60019c2083facf66dd418c351fdc351b
     hostname: kafka-rest-proxy
     ports:
       - "8082:8082"
@@ -55,7 +55,7 @@ services:
       - kafka1
 
   kafka-connect:
-    image: confluentinc/cp-kafka-connect:7.5.1
+    image: confluentinc/cp-kafka-connect:7.5.1@sha256:55aefab6dd49c1f89231b477f04e0a4bc467466c26c989f1e5379109ea160982
     hostname: kafka-connect
     ports:
       - "8083:8083"
@@ -83,7 +83,7 @@ services:
       - kafka-rest-proxy
 
   akhq:
-    image: tchiotludo/akhq:0.24.0
+    image: tchiotludo/akhq:0.24.0@sha256:6ccf8323ae6e93a893107f857cd9f7210add3569743b2c8528c6567967cc636f
     environment:
       AKHQ_CONFIGURATION: |
         akhq:
