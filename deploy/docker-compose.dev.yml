@@ -13,7 +13,7 @@ services:
       - ./oracle/init:/docker-entrypoint-initdb.d/setup
 
   zoo1:
-    image: zookeeper:3.9.1
+    image: zookeeper:3.9.2
     restart: unless-stopped
     hostname: zoo1
     ports:
@@ -24,7 +24,7 @@ services:
       ZOO_SERVERS: server.1=zoo1:2888:3888;2181
 
   kafka1:
-    image: confluentinc/cp-kafka:7.5.3@sha256:51145a40d23336a11085ca695d02bdeee66fe01b582837c6d223384952226be9
+    image: confluentinc/cp-kafka:7.6.1@sha256:620734d9fc0bb1f9886932e5baf33806074469f40e3fe246a3fdbb59309535fa
     hostname: kafka1
     ports:
       - "9092:9092"
@@ -40,7 +40,7 @@ services:
       - zoo1
 
   kafka-connect:
-    image: confluentinc/cp-kafka-connect:7.5.3@sha256:e6bc1b88b43a23de290da574b0bbc06135b0005ecb9cac0c95155d3ff50f283a
+    image: confluentinc/cp-kafka-connect:7.6.1@sha256:4539c1f3169f6dca603b29fd42a693295e849bc48cdc0583dff7708748659d76
     hostname: kafka-connect
     ports:
       - "8083:8083"
@@ -67,7 +67,7 @@ services:
       - kafka1
 
   akhq:
-    image: tchiotludo/akhq:0.24.0
+    image: tchiotludo/akhq:0.25.0
     environment:
       AKHQ_CONFIGURATION: |
         akhq:
