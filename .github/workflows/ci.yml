@@ -16,7 +16,7 @@ permissions: read-all
 
 jobs:
   build:
-    uses: miracum/.github/.github/workflows/standard-build.yaml@392030c6f94fcfaa509a606af2b0907d022f2257 # v1.8.3
+    uses: miracum/.github/.github/workflows/standard-build.yaml@db8574b42e0c528f9cddc1ce84a40a837283cee0 # v1.10.2
     permissions:
       contents: read
       id-token: write
@@ -40,7 +40,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Create KinD cluster
         uses: helm/kind-action@0025e74a8c7512023d06dc019c617aa3cf561fde # v1.10.0
@@ -102,7 +102,7 @@ jobs:
             kind-cluster-dump.txt
 
   lint:
-    uses: miracum/.github/.github/workflows/standard-lint.yaml@392030c6f94fcfaa509a606af2b0907d022f2257 # v1.8.3
+    uses: miracum/.github/.github/workflows/standard-lint.yaml@db8574b42e0c528f9cddc1ce84a40a837283cee0 # v1.10.2
     permissions:
       contents: read
       pull-requests: write
@@ -116,7 +116,7 @@ jobs:
       github-token: ${{ secrets.GITHUB_TOKEN }}
 
   release:
-    uses: miracum/.github/.github/workflows/standard-release.yaml@392030c6f94fcfaa509a606af2b0907d022f2257 # v1.8.3
+    uses: miracum/.github/.github/workflows/standard-release.yaml@db8574b42e0c528f9cddc1ce84a40a837283cee0 # v1.10.2
     needs:
       - build
     permissions:
